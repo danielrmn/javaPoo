@@ -19,9 +19,8 @@ public class UIMenu {
 
         int response = 0;
         do {
-            System.out.println("1. Users.Doctor");
-            System.out.println("2. Users.Patient");
-            System.out.println("3. nurse");
+            System.out.println("1. Doctor");
+            System.out.println("2. Patient");
             System.out.println("0. salir");
 
             Scanner sc = new Scanner(System.in);
@@ -36,9 +35,6 @@ public class UIMenu {
                     response = 0;
                     authUser(2);
 
-                    break;
-                case 3:
-                    authUser(3);
                     break;
                 case 0:
                     showPatientMenu();
@@ -81,7 +77,6 @@ public class UIMenu {
     private static void authUser(int userType){
         // userType = 1 Doctor
         // userType = 2 patient
-        // userType = 3 nurse
 
         //array de doctores
         ArrayList<Doctor> doctors = new ArrayList<>();
@@ -95,11 +90,6 @@ public class UIMenu {
         patients.add(new Patient("carlos", "roberto.com"));
         patients.add(new Patient("lumberto", "lumberto.com"));
 
-        //array de nurse
-        ArrayList<Nurse>nurses = new ArrayList<>();
-        nurses.add(new Nurse("stephany", "stephany.com"));
-        nurses.add(new Nurse("rodrigez", "rodrigez.com"));
-        nurses.add(new Nurse("sanchez", "sanchez.com"));
 
         boolean emailCorrect = false;
         do {
@@ -111,22 +101,15 @@ public class UIMenu {
                 for (Doctor d: doctors){
                     if (d.getEmail().equals(email)){
                         doctorLogged = d;
+                        UIDoctorMenu.showDacotoMenu();
                     }
                 }
             }
             if(userType == 2)
             {
-                for (Patient d: patients){
-                    if (d.getEmail().equals(email)){
-                        patientLogged = d;
-                    }
-                }
-            }
-            if(userType == 3)
-            {
-                for (Nurse d: nurses){
-                    if (d.getEmail().equals(email)){
-                        nurseLogged = d;
+                for (Patient p: patients){
+                    if (p.getEmail().equals(email)){
+                        patientLogged = p;
                     }
                 }
             }
