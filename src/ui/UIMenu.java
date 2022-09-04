@@ -110,6 +110,7 @@ public class UIMenu {
                 for (Patient p: patients){
                     if (p.getEmail().equals(email)){
                         patientLogged = p;
+                        UIPatientMenu.showPatientManu();
                     }
                 }
             }

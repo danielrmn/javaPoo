@@ -1,9 +1,14 @@
 package users;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Patient extends Users {
     private double weight;
     private double height;
     private String blood;
+    private ArrayList<AppointmentdoDoctor> appointmentdoDoctors = new ArrayList<>();
+    //private ArrayList<AppointmentdoNurse> appointmentdoNurses = new ArrayList<>();
 
     //metodos
     public Patient(String name, String email){
@@ -35,6 +40,16 @@ public class Patient extends Users {
 
     public void setBlood(String blood) {
         this.blood = blood;
+    }
+
+    public ArrayList<AppointmentdoDoctor> getAppointmentdoDoctors() {
+        return appointmentdoDoctors;
+    }
+
+    public void addAppointmentdoDoctors(Doctor doctor, Date date, String time) {
+        AppointmentdoDoctor  appointmentdoDoctor = new AppointmentdoDoctor(this, doctor);
+        appointmentdoDoctor.schedule(date, time);
+        appointmentdoDoctors.add(appointmentdoDoctor);
     }
 
     // spbre escritura
